@@ -23,7 +23,8 @@ I'm a PhD Candidate in Computer Science at the University of Michigan, advised b
 
 <div class="research-highlight">
   <strong>I study why AI systems built for social impact fail the people they're meant to serve, and how to build ones that don't.</strong>
-  Human context (needs, constraints, values) gets lost during development, and deployed systems reshape the people around them in return. My research develops methods for both directions: stakeholder-grounded design, and evaluation of how AI affects real users. I'm particularly interested in medical contexts such as women's reproductive health. 
+
+  Human context (needs, constraints, values) often gets lost during development, and deployed AI changes users' decisions, skills, and capacities. My research addresses both directions: stakeholder-grounded AI design, and evaluation of how AI affects real users. I work primarily in health contexts — currently prenatal care, breast cancer treatment, and physical therapy.
 </div>
 
 
@@ -42,7 +43,10 @@ Outside of research, music is a huge part of my life. I've been playing violin f
 <ul class="home-pub-list">
   {% for pub in featured_pubs %}
     <li class="home-pub">
-      <div class="home-pub-venue">{{ pub.venue_short | default: pub.journal }} {{ pub.year }}</div>
+      <div class="home-pub-meta">
+        <span class="home-pub-venue">{{ pub.venue_short | default: pub.journal }}</span>
+        <span class="home-pub-year">{{ pub.year }}</span>
+      </div>
       <div class="home-pub-body">
         <span class="home-pub-title">
           {% if pub.external_url %}<a href="{{ pub.external_url }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}

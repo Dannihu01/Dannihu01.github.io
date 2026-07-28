@@ -59,21 +59,45 @@
 
 .home-pub {
   display: grid;
-  grid-template-columns: 7rem 1fr;
+  grid-template-columns: 7.5rem 1fr;
   gap: 1.1rem;
-  align-items: baseline;
-  padding: 0.7rem 0;
+  align-items: start;
+  padding: 1rem 0;
+  border-top: 1px solid #e6edf4;
+}
+
+.home-pub:first-child {
+  border-top: none;
+  padding-top: 0.3rem;
+}
+
+.home-pub-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .home-pub-venue {
-  font-size: 0.82rem;
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.8em;
   font-weight: 700;
-  color: #005fa3;
+  color: #fff;
+  background: #005fa3;
+  border-radius: 6px;
+}
+
+.home-pub-year {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #667586;
 }
 
 .home-pub-title {
   display: block;
-  font-weight: 600;
+  font-size: 1em;
+  font-weight: 700;
   color: #12263f;
   line-height: 1.35;
 
@@ -87,15 +111,19 @@
 
 .home-pub-authors {
   display: block;
-  margin-top: 2px;
-  font-size: 0.82rem;
+  margin-top: 3px;
+  font-size: 0.9em;
   color: #667586;
 }
 
 @media (max-width: 520px) {
   .home-pub {
     grid-template-columns: 1fr;
-    gap: 0.2rem;
+    gap: 0.4rem;
+  }
+
+  .home-pub-venue {
+    justify-self: start;
   }
 }
 
