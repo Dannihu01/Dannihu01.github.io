@@ -4,8 +4,7 @@ title: Danniell Hu
 description: Computer Science PhD Candidate at the University of Michigan studying human-centered AI — how human context shapes AI systems and how AI reshapes human context in return, primarily in health.
 
 baseurl: ""
-# url: /dannihu01.github.io #name of GitHub repository
-# url: "" #custom url to be used instead of GitHub repository
+url: "https://dannihu01.github.io"
 email: "dannihu@umich.edu"
 
 # Social media links in footer

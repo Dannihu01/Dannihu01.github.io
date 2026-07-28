@@ -35,46 +35,35 @@ Outside of research, music is a huge part of my life. I've been playing violin f
 
 <hr class="section-rule">
 
-<div class="news-section-heading"><h2>News</h2></div>
+{% assign featured_pubs = site.publications | where: "featured", true | sort: "year" | reverse %}
+{% if featured_pubs.size > 0 %}
+<div class="news-section-heading"><h2>Selected Publications</h2></div>
 
-{% assign news_items = site.news | sort: "date" | reverse %}
-<ul class="news-list">
-  {% for news in news_items %}
-    <li class="news-item">
-
-      <time class="news-date" datetime="{{ news.date | date: '%Y-%m-%d' }}">
-        <span class="news-date__month">{{ news.date | date: "%b" }}</span>
-        <span class="news-date__day">{{ news.date | date: "%d" }}</span>
-        <span class="news-date__year">{{ news.date | date: "%Y" }}</span>
-      </time>
-
-      <div class="news-body">
-        <div class="news-header">
-          <span class="news-title">{{ news.title }}</span>
-          {% if news.acceptance_rate %}
-            <span class="acceptance-rate-badge">{{ news.acceptance_rate }}</span>
-          {% endif %}
-          {% if news.publication_url and news.publication_url != "" %}
-            <a href="{{ news.publication_url }}" target="_blank" rel="noopener" class="news-read-more">
-              Read more →
-            </a>
-          {% endif %}
-        </div>
-
-        {% if news.image %}
-          <div class="news-image-wrapper">
-            <img src="{{ news.image | relative_url }}"
-                 alt="{{ news.title }}"
-                 class="news-image">
-          </div>
-          {% if news.image_credit %}
-            <div class="news-image-credit">{{ news.image_credit }}</div>
-          {% endif %}
-        {% endif %}
-
-        <p class="news-content">{{ news.content | strip_html | truncatewords: 150 }}</p>
+<ul class="home-pub-list">
+  {% for pub in featured_pubs %}
+    <li class="home-pub">
+      <div class="home-pub-venue">{{ pub.venue_short | default: pub.journal }} {{ pub.year }}</div>
+      <div class="home-pub-body">
+        <span class="home-pub-title">
+          {% if pub.external_url %}<a href="{{ pub.external_url }}" target="_blank" rel="noopener">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}
+        </span>
+        <span class="home-pub-authors">{{ pub.authors }}</span>
       </div>
-
     </li>
   {% endfor %}
 </ul>
+
+<p class="news-see-all">
+  <a href="{{ '/publications/' | relative_url }}">All publications →</a>
+</p>
+
+<hr class="section-rule">
+{% endif %}
+
+<div class="news-section-heading"><h2>News</h2></div>
+
+{% include news-list.html limit=5 excerpt_words=30 %}
+
+<p class="news-see-all">
+  <a href="{{ '/news/' | relative_url }}">See all news →</a>
+</p>

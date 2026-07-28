@@ -1,0 +1,54 @@
+{% comment %}
+  Renders the news timeline.
+  Params:
+    include.limit         — max items to show (omit to show all)
+    include.excerpt_words — words before truncation (default 30)
+{% endcomment %}
+
+{% assign news_items = site.news | sort: "date" | reverse %}
+{% if include.limit %}
+  {% assign lim = include.limit | times: 1 %}
+  {% assign news_items = news_items | slice: 0, lim %}
+{% endif %}
+{% assign ew = include.excerpt_words | default: 30 | times: 1 %}
+
+<ul class="news-list">
+  {% for news in news_items %}
+    <li class="news-item">
+
+      <time class="news-date" datetime="{{ news.date | date: '%Y-%m-%d' }}">
+        <span class="news-date__month">{{ news.date | date: "%b" }}</span>
+        <span class="news-date__day">{{ news.date | date: "%d" }}</span>
+        <span class="news-date__year">{{ news.date | date: "%Y" }}</span>
+      </time>
+
+      <div class="news-body">
+        <div class="news-header">
+          <span class="news-title">{{ news.title }}</span>
+          {% if news.acceptance_rate %}
+            <span class="acceptance-rate-badge">{{ news.acceptance_rate }}</span>
+          {% endif %}
+          {% if news.publication_url and news.publication_url != "" %}
+            <a href="{{ news.publication_url }}" target="_blank" rel="noopener" class="news-read-more">
+              Read more →
+            </a>
+          {% endif %}
+        </div>
+
+        {% if news.image %}
+          <div class="news-image-wrapper">
+            <img src="{{ news.image | relative_url }}"
+                 alt="{{ news.title }}"
+                 class="news-image">
+          </div>
+          {% if news.image_credit %}
+            <div class="news-image-credit">{{ news.image_credit }}</div>
+          {% endif %}
+        {% endif %}
+
+        <p class="news-content">{{ news.content | strip_html | truncatewords: ew }}</p>
+      </div>
+
+    </li>
+  {% endfor %}
+</ul>

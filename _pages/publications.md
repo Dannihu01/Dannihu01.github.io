@@ -38,9 +38,18 @@ published: true
             <a href="{{ publication.external_url }}" target="_blank">Paper</a>
           {% endif %}
           {% if publication.abstract %}
-            <details class="publication-abstract">
+            <details class="publication-toggle publication-abstract">
               <summary>Abstract</summary>
               <p>{{ publication.abstract }}</p>
+            </details>
+          {% endif %}
+          {% if publication.bibtex %}
+            <details class="publication-toggle publication-cite">
+              <summary>Cite</summary>
+              <div class="cite-box">
+                <button class="cite-copy" type="button" aria-label="Copy BibTeX">Copy</button>
+                <pre class="cite-bibtex">{{ publication.bibtex }}</pre>
+              </div>
             </details>
           {% endif %}
         </div>
@@ -48,3 +57,33 @@ published: true
     </div>
   {% endfor %}
 </div>
+
+<script>
+  document.querySelectorAll('.cite-copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pre = btn.parentElement.querySelector('.cite-bibtex');
+      if (!pre) return;
+      var text = pre.innerText;
+      var done = function () {
+        var original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('is-copied');
+        setTimeout(function () {
+          btn.textContent = original;
+          btn.classList.remove('is-copied');
+        }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {});
+      } else {
+        var range = document.createRange();
+        range.selectNode(pre);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        sel.removeAllRanges();
+      }
+    });
+  });
+</script>
