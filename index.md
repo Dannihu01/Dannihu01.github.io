@@ -22,9 +22,9 @@ I'm a PhD Candidate in Computer Science at the University of Michigan, advised b
 
 
 <div class="research-highlight">
-  <strong>I study why AI systems built for social impact fail the people they're meant to serve, and how to build ones that don't.</strong>
+  <strong>I build use-inspired AI systems for real-world deployment, and I study human-AI interaction.</strong>
 
-  Human context (needs, constraints, values) often gets lost during development, and deployed AI changes users' decisions, skills, and capacities. My research addresses both directions: stakeholder-grounded AI design, and evaluation of how AI affects real users. I work primarily in health contexts — currently prenatal care, breast cancer treatment, and physical therapy.
+  Human context (needs, constraints, values) often gets lost during development, and deployed AI changes users' decisions, skills, and capacities. My research addresses both directions: stakeholder-grounded AI design, and evaluation of how AI affects real users. I work primarily in health contexts — currently prenatal care planning and physical therapy.
 </div>
 
 
