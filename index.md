@@ -22,9 +22,8 @@ I'm a PhD Candidate in Computer Science at the University of Michigan, advised b
 
 
 <div class="research-highlight">
-  <strong>I build use-inspired AI systems for real-world deployment, and I study human-AI interaction.</strong>
-
-  Human context (needs, constraints, values) often gets lost during development, and deployed AI changes users' decisions, skills, and capacities. My research addresses both directions: stakeholder-grounded AI design, and evaluation of how AI affects real users. I work primarily in health contexts — currently prenatal care planning and physical therapy.
+  <strong>My research lies at the intersection of Artificial Intelligence (AI), Human–Computer Interaction, and health, where I study how AI systems can be designed, personalized, and deployed to meaningfully meet the needs, values, and constraints of the people they are meant to serve.</strong>
+  Grounded in a mixed-methods, human-centered approach with real-world stakeholders and users, my work investigates how AI can be built through stakeholder-grounded design and how deployed systems reshape users' decisions, skills, and capacities — while remaining accountable to lived experience, user agency, and real-world use. I work primarily in health contexts, currently prenatal care planning and physical therapy.
 </div>
 
 
